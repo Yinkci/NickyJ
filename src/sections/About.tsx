@@ -55,7 +55,7 @@ export function About() {
         <article className="hidden md:flex col-span-1 row-span-1 rounded-2xl border border-(--card-border) bg-linear-to-br from-(--card) to-(--card-border) p-7">
           <div className="flex w-full flex-col justify-center text-center">
             <p className="text-xs uppercase tracking-[0.2em] text-violet-300">Profile</p>
-            <h3 className="mt-2 text-4xl font-black leading-[1.05]">YOUR NAME</h3>
+            <h3 className="mt-2 text-4xl font-black leading-[1.05]">NICKY JACOBO</h3>
             <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-(--muted)">
               Full Stack Developer
             </p>
