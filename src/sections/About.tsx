@@ -38,7 +38,7 @@ export function About() {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:grid-rows-[9rem_auto_9rem]">
         <article className="md:hidden col-span-1 row-span-1 rounded-2xl border border-(--card-border) bg-linear-to-br from-(--card) to-(--card-border) p-6">
           <p className="text-xs uppercase tracking-[0.2em] text-violet-300">Profile</p>
-          <h3 className="mt-2 text-3xl font-black leading-[1.05]">YOUR NAME</h3>
+          <h3 className="mt-2 text-3xl font-black leading-[1.05]">NICKY JACOBO</h3>
           <p className="mt-2 text-xs text-(--muted)">Full Stack Developer</p>
         </article>
 
