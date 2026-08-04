@@ -3,18 +3,20 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import nickyOne from "../myself/nicky3.png";
+import nickyTwo from "../myself/nicky2.png";
 
 const TILE_IMAGES = {
   education:
     "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1200&auto=format&fit=crop",
   work:
-    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop",
+    nickyTwo,
   location:
     "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200&auto=format&fit=crop",
   mindset:
     "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop",
   default:
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+    nickyOne,
 } as const;
 
 type TileKey = keyof typeof TILE_IMAGES;

@@ -65,7 +65,7 @@ export function Hero() {
         <div className="absolute right-0 bottom-6 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-3xl" />
       </div>
 
-      <div className="grid w-full items-end gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+      <div className="grid w-full items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <div className="space-y-6">
           <p className="text-xs uppercase tracking-[0.25em] text-violet-300 sm:text-sm">
             NICKY CABALU JACOBO
