@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import awardStar from "../award/AwardStar.jpg";
 import nickyOne from "../myself/nicky.png";
 import nickyTwo from "../myself/nicky2.png";
 import nickyThree from "../myself/nicky3.png";
@@ -70,13 +71,13 @@ export function About() {
         </motion.div>
 
         <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-20">
-          {/* Portrait column — stays put while the facts scroll past */}
+          {/* Portrait column. Not sticky: portrait + caption + award plaque runs
+              ~800px tall, which would clip the plaque off-screen on a laptop
+              viewport while the column was stuck. */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
-            className="lg:sticky lg:top-32 lg:self-start"
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-onyx">
               <AnimatePresence mode="wait">
@@ -127,6 +128,33 @@ export function About() {
                     }`}
                   />
                 ))}
+              </div>
+            </div>
+
+            {/* Award plaque — its own panel under the portrait, never part of
+                the rotation above it. The image keeps its native 716x768 ratio
+                so the engraving stays legible and uncropped. */}
+            <div className="group mt-6 border border-ivory/12 bg-onyx/70 p-4 transition-colors duration-500 hover:border-champagne/30">
+              {/* 10rem wide against the 716x768 ratio puts the image at ~172px
+                  tall, down from ~275px at 16rem. */}
+              <div className="grid gap-5 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] sm:items-center sm:gap-6">
+                <div className="relative overflow-hidden border border-champagne/25 bg-obsidian">
+                  <Image
+                    src={awardStar}
+                    alt="Glass star trophy engraved 2024 Client Experience Award, Nicky Jacobo"
+                    sizes="(max-width: 639px) 92vw, 10rem"
+                    className="h-auto w-full transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="eyebrow">Recognition</p>
+                  <p className="display-medium mt-2.5 text-xl text-ivory transition-colors duration-500 group-hover:text-champagne sm:text-2xl">
+                    2024 Client Experience Award
+                  </p>
+                  <div className="rule mt-5 w-12" />
+                  <p className="meta mt-5">Engraved &mdash; Nicky Jacobo</p>
+                </div>
               </div>
             </div>
           </motion.div>

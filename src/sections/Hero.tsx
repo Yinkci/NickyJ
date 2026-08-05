@@ -9,6 +9,8 @@ import clientTwo from "../clients/client2.png";
 import clientFour from "../clients/client4.jpg";
 import clientFive from "../clients/client5.jpg";
 
+const clientCountries = ["Philippines", "Australia", "United Kingdom", "USA", "Ghana"];
+
 const clientImages = [
   {
     image: clientTwo,
@@ -102,105 +104,122 @@ export function Hero() {
                 About me
               </a>
             </div>
+
+            <div className="mt-12 border-t border-ivory/10 pt-6">
+              <p className="eyebrow">Clients in</p>
+              <p className="mt-3.5 flex flex-wrap items-baseline gap-x-3 gap-y-2">
+                {clientCountries.map((country, index) => (
+                  <span key={country} className="flex items-baseline gap-3">
+                    {index > 0 ? (
+                      <span className="text-champagne/45" aria-hidden="true">
+                        ·
+                      </span>
+                    ) : null}
+                    <span className="text-sm font-light text-ivory/75 sm:text-base">{country}</span>
+                  </span>
+                ))}
+              </p>
+            </div>
           </motion.div>
 
-          {/* Client moments slider */}
+          {/* Client moments slider, with the award plaque beneath it */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
-            className="relative border border-ivory/12 bg-onyx p-2 shadow-[0_40px_90px_-45px_rgba(0,0,0,0.9)]"
           >
-            <div className="relative aspect-[16/11] overflow-hidden">
-              {/* All slides stay mounted and crossfade. Nothing mounts or
-                  unmounts mid-transition, so there is no gap and no rescale. */}
-              {clientImages.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={false}
-                  animate={{ opacity: index === activeImage ? 1 : 0 }}
-                  transition={{ duration: 1.1, ease: "easeInOut" }}
-                  aria-hidden={index !== activeImage}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    priority={index === 0}
-                    sizes="(max-width: 1023px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </motion.div>
-              ))}
+            <div className="relative border border-ivory/12 bg-onyx p-2 shadow-[0_40px_90px_-45px_rgba(0,0,0,0.9)]">
+              <div className="relative aspect-[16/11] overflow-hidden">
+                {/* All slides stay mounted and crossfade. Nothing mounts or
+                    unmounts mid-transition, so there is no gap and no rescale. */}
+                {clientImages.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={false}
+                    animate={{ opacity: index === activeImage ? 1 : 0 }}
+                    transition={{ duration: 1.1, ease: "easeInOut" }}
+                    aria-hidden={index !== activeImage}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      priority={index === 0}
+                      sizes="(max-width: 1023px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+                ))}
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-linear-to-t from-obsidian via-obsidian/45 to-transparent" />
-              <div className="pointer-events-none absolute inset-3 border border-champagne/15" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-linear-to-t from-obsidian via-obsidian/45 to-transparent" />
+                <div className="pointer-events-none absolute inset-3 border border-champagne/15" />
 
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-6">
-                <div className="min-w-0">
-                  <p className="eyebrow">Client moments</p>
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={activeImage}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.4 }}
-                      className="display-medium mt-2 truncate text-xl text-ivory sm:text-2xl"
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-6">
+                  <div className="min-w-0">
+                    <p className="eyebrow">Client moments</p>
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={activeImage}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.4 }}
+                        className="display-medium mt-2 truncate text-xl text-ivory sm:text-2xl"
+                      >
+                        {currentImage.label}
+                      </motion.p>
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="flex shrink-0 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => goTo(activeImage - 1)}
+                      aria-label="Show previous client moment"
+                      className="grid size-10 place-items-center rounded-full border border-ivory/25 bg-obsidian/40 text-ivory backdrop-blur-sm transition-all duration-500 hover:border-champagne hover:bg-champagne hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
                     >
-                      {currentImage.label}
-                    </motion.p>
-                  </AnimatePresence>
-                </div>
-
-                <div className="flex shrink-0 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => goTo(activeImage - 1)}
-                    aria-label="Show previous client moment"
-                    className="grid size-10 place-items-center rounded-full border border-ivory/25 bg-obsidian/40 text-ivory backdrop-blur-sm transition-all duration-500 hover:border-champagne hover:bg-champagne hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
-                  >
-                    <ChevronLeft size={17} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => goTo(activeImage + 1)}
-                    aria-label="Show next client moment"
-                    className="grid size-10 place-items-center rounded-full border border-ivory/25 bg-obsidian/40 text-ivory backdrop-blur-sm transition-all duration-500 hover:border-champagne hover:bg-champagne hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
-                  >
-                    <ChevronRight size={17} />
-                  </button>
+                      <ChevronLeft size={17} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => goTo(activeImage + 1)}
+                      aria-label="Show next client moment"
+                      className="grid size-10 place-items-center rounded-full border border-ivory/25 bg-obsidian/40 text-ivory backdrop-blur-sm transition-all duration-500 hover:border-champagne hover:bg-champagne hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
+                    >
+                      <ChevronRight size={17} />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex items-center justify-between gap-4 px-3 pt-4 pb-2">
-              <span className="meta">
-                {String(activeImage + 1).padStart(2, "0")}
-                <span className="mx-2 text-champagne/50">/</span>
-                {String(clientImages.length).padStart(2, "0")}
-              </span>
+              <div className="flex items-center justify-between gap-4 px-3 pt-4 pb-2">
+                <span className="meta">
+                  {String(activeImage + 1).padStart(2, "0")}
+                  <span className="mx-2 text-champagne/50">/</span>
+                  {String(clientImages.length).padStart(2, "0")}
+                </span>
 
-              <div className="flex items-center gap-2">
-                {clientImages.map((item, index) => (
-                  <button
-                    key={item.label}
-                    type="button"
-                    onClick={() => goTo(index)}
-                    aria-label={`Show ${item.label.toLowerCase()}`}
-                    aria-current={activeImage === index ? "true" : undefined}
-                    className="py-2"
-                  >
-                    <span
-                      className={`block h-px transition-all duration-700 ${
-                        activeImage === index
-                          ? "w-12 bg-champagne"
-                          : "w-5 bg-ivory/25 hover:bg-ivory/60"
-                      }`}
-                    />
-                  </button>
-                ))}
+                <div className="flex items-center gap-2">
+                  {clientImages.map((item, index) => (
+                    <button
+                      key={item.label}
+                      type="button"
+                      onClick={() => goTo(index)}
+                      aria-label={`Show ${item.label.toLowerCase()}`}
+                      aria-current={activeImage === index ? "true" : undefined}
+                      className="py-2"
+                    >
+                      <span
+                        className={`block h-px transition-all duration-700 ${
+                          activeImage === index
+                            ? "w-12 bg-champagne"
+                            : "w-5 bg-ivory/25 hover:bg-ivory/60"
+                        }`}
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
