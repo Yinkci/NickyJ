@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Briefcase, Layers, MapPin, MessageSquare, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import nickyOne from "../myself/nicky.png";
 import nickyTwo from "../myself/nicky2.png";
@@ -12,16 +12,11 @@ import nickyThree from "../myself/nicky3.png";
 const MAP_IMAGE =
   "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200&auto=format&fit=crop";
 
-const SPOTLIGHTS = {
-  default: { image: nickyThree, label: "Nicky Jacobo", note: "Full Stack Developer" },
-  experience: { image: nickyTwo, label: "10+ years", note: "Shipping production systems" },
-  capabilities: { image: nickyThree, label: "Full stack", note: "Frontend, backend, APIs" },
-  collaboration: { image: nickyOne, label: "Collaboration", note: "Clear and dependable" },
-  craft: { image: nickyTwo, label: "Craft", note: "Built to last" },
-  location: { image: MAP_IMAGE, label: "Remote", note: "Worldwide, flexible hours" },
-};
-
-type SpotlightKey = keyof typeof SPOTLIGHTS;
+const spotlights = [
+  { image: nickyThree, label: "Nicky Jacobo", note: "Full Stack Developer" },
+  { image: nickyTwo, label: "10+ years", note: "Shipping production systems" },
+  { image: nickyOne, label: "Full stack", note: "Frontend, backend, APIs" },
+];
 
 const technologies = ["Next.js", "React", "TypeScript", "Node", "WordPress", "APIs", "Tailwind"];
 
@@ -47,7 +42,7 @@ const cards = [
 ];
 
 const cardShell =
-  "group relative overflow-hidden rounded-2xl border border-(--card-border) bg-linear-to-br from-(--card) to-(--card-border) transition-colors duration-300 hover:border-violet-400/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400";
+  "group relative overflow-hidden rounded-2xl border border-(--card-border) bg-linear-to-br from-(--card) to-(--card-border) transition-colors duration-300 hover:border-violet-400/40";
 
 const reveal = {
   initial: { opacity: 0, y: 18 },
@@ -56,16 +51,16 @@ const reveal = {
 };
 
 export function About() {
-  const [active, setActive] = useState<SpotlightKey>("default");
-  const spotlight = SPOTLIGHTS[active];
+  const [active, setActive] = useState(0);
+  const spotlight = spotlights[active];
 
-  const spotlightOn = (key: SpotlightKey) => ({
-    tabIndex: 0,
-    onMouseEnter: () => setActive(key),
-    onMouseLeave: () => setActive("default"),
-    onFocus: () => setActive(key),
-    onBlur: () => setActive("default"),
-  });
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % spotlights.length);
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -184,7 +179,6 @@ export function About() {
               key={card.key}
               {...reveal}
               transition={{ duration: 0.5, delay: 0.12 + index * 0.06 }}
-              {...spotlightOn(card.key)}
               className={`${cardShell} p-5 sm:p-6 lg:col-span-2 ${
                 card.key === "collaboration" ? "sm:col-span-2" : ""
               }`}
@@ -207,7 +201,6 @@ export function About() {
           <motion.article
             {...reveal}
             transition={{ duration: 0.5, delay: 0.18 }}
-            {...spotlightOn("craft")}
             className={`${cardShell} flex flex-col justify-between pt-5 pb-4 sm:col-span-2 sm:pt-6 lg:col-span-2`}
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.16),transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -253,8 +246,7 @@ export function About() {
           <motion.article
             {...reveal}
             transition={{ duration: 0.5, delay: 0.24 }}
-            {...spotlightOn("location")}
-            className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-(--card-border) bg-(--card) transition-colors duration-300 hover:border-violet-400/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 sm:col-span-2 sm:aspect-[16/9] lg:col-span-2 lg:aspect-auto lg:h-full"
+            className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-(--card-border) bg-(--card) transition-colors duration-300 hover:border-violet-400/40 sm:col-span-2 sm:aspect-[16/9] lg:col-span-2 lg:aspect-auto lg:h-full"
           >
             <Image
               src={MAP_IMAGE}

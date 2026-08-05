@@ -25,7 +25,7 @@ export const socials: Social[] = [
 ];
 
 export const siteConfig = {
-  name: "Paweł Szostak",
+  name: "Nicky Jacobo",
   title: "Full Stack Developer",
   description: "I build useful products with modern web stack",
 };
