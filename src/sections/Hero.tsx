@@ -86,8 +86,7 @@ export function Hero() {
             <div className="rule mt-8 w-20" />
 
             <p className="mt-8 max-w-xl text-base font-light leading-relaxed text-ivory/70">
-              Senior Full Stack Developer building fast, responsive websites, plugins, and web
-              applications — WordPress, PHP, Laravel, Vue, e-commerce, and performance.
+              Senior Full-Stack Developer building high-performance websites, business systems, plugins, and web applications with Laravel, WordPress, PHP, Vue, and modern JavaScript.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">

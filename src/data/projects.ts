@@ -11,6 +11,10 @@ import swosh from "../portfolio_images/SWOSH.jpg";
 import tissueDispenserDashboardThingsboard from "../portfolio_images/Tissue Dispenser Dashboard - Thingsboard.png";
 import worldTradeCenterMetroManila from "../portfolio_images/World Trade Center Metro Manila.jpg";
 import Arkon from "../portfolio_images/Arkon.png";
+import Lindy from "../portfolio_images/Lindy-Real-Estate.png";
+import remaxgc from "../portfolio_images/Remax-Regency.jpg";
+import freshLook from "../portfolio_images/Fresh-Look.png";
+import focusPartners from "../portfolio_images/Focus-Partners.png";
 
 export interface Project {
   id: string;
@@ -89,4 +93,8 @@ export const projects: Project[] = [
     "World Trade Center Metro Manila",
     worldTradeCenterMetroManila,
   ),
+  portfolioProject("lindy-real-estate", "Lindy Real Estate", Lindy),
+  portfolioProject("remaxgc", "Remax Regency", remaxgc),
+  portfolioProject("fresh-look", "Fresh Look", freshLook),
+  portfolioProject("focus-partners", "Focus Partners", focusPartners),
 ];

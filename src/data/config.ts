@@ -20,5 +20,5 @@ export const siteConfig = {
   name: "Nicky Jacobo",
   title: "Senior Full Stack Developer",
   description:
-    "Senior Full Stack Developer with over 10 years of front-end and back-end experience, building fast, responsive websites, plugins, and web applications.",
+    "Senior Full-Stack Developer building high-performance websites, business systems, plugins, and web applications with Laravel, WordPress, PHP, Vue, and modern JavaScript.",
 };

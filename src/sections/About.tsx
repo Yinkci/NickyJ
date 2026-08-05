@@ -5,8 +5,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import awardStar from "../award/AwardStar.jpg";
-import nickyOne from "../myself/nicky.png";
-import nickyTwo from "../myself/nicky2.png";
+import nickyOne from "../myself/nicky5.png";
+import nickyTwo from "../myself/nicky6.png";
 import nickyThree from "../myself/nicky3.png";
 
 const portraits = [
@@ -19,12 +19,12 @@ const facts = [
   {
     index: "01",
     label: "Experience",
-    body: "Over 10 years of front-end and back-end work. Currently building high-performance real estate platforms at STEPPS, where I have been since 2019.",
+    body: "Over 10 years of front-end and back-end development, delivering websites, web applications, business systems, APIs, and custom solutions across a wide range of industries.",
   },
   {
     index: "02",
     label: "Capabilities",
-    body: "WordPress and WooCommerce builds, custom plugins, PHP and Laravel back ends, Vue and modern JavaScript front ends, and API integrations.",
+    body: "Websites, web applications, business systems, WordPress, Laravel, PHP, Vue, modern JavaScript, APIs, database architecture, e-commerce, and custom software development.",
   },
   {
     index: "03",
@@ -174,14 +174,10 @@ export function About() {
               <div className="rule mt-8 w-20" />
 
               <p className="mt-10 text-lg font-light leading-relaxed text-ivory/80 sm:text-xl">
-                I build fast, responsive websites, plugins, and web applications — and I have been
-                doing it for over a decade.
+                I build fast, scalable websites, web applications, backend systems, and custom solutions, backed by over a decade of professional development experience.
               </p>
               <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-(--muted)">
-                My work runs across WordPress, PHP, Vue, Laravel, modern JavaScript, e-commerce,
-                SEO, and performance optimisation. These days that means high-performance real
-                estate platforms, custom plugins, and API integrations — the kind of work that has
-                to stay quick and findable long after handover.
+                My expertise covers frontend and backend development using Laravel, PHP Vue, modern JavaScript, APIs, databases, e-commerce, WordPress, SEO, and performance optimisation. I build scalable websites, web applications, business systems, custom plugins, and integrations designed to be fast, maintainable, and reliable.
               </p>
 
               <div className="mt-10 flex items-center gap-3">
