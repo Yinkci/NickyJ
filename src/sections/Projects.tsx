@@ -49,20 +49,27 @@ export function Projects() {
         </div>
 
         <div className="section">
-          <div className="mb-20 text-center">
-            <span className="text-base font-bold uppercase tracking-widest text-(--accent)">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center sm:mb-16"
+          >
+            <span className="text-xs font-bold uppercase tracking-widest text-(--accent) sm:text-base">
               Selected work
             </span>
-            <h2 className="mt-4 px-2 text-3xl font-bold tracking-tight text-pretty sm:text-5xl md:text-6xl">
+            <h2 className="mt-3 px-2 text-3xl font-bold tracking-tight text-pretty sm:text-5xl md:text-6xl">
               Featured{" "}
               <span className="text-gradient-shimmer">Projects</span>
             </h2>
-            <p className="mx-auto mt-8 max-w-3xl px-2 text-base font-light leading-relaxed text-(--muted) sm:text-xl">
-              A selection of client work, web platforms, and product interfaces.
+            <p className="mx-auto mt-6 max-w-2xl px-2 text-base font-light leading-relaxed text-(--muted) sm:text-lg">
+              Client work, web platforms, and product interfaces. Select any screenshot to see it
+              full size.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+          <div className="mx-auto max-w-6xl columns-1 gap-6 lg:columns-2 lg:gap-8">
             {projects
               .filter((p) => p.featured)
               .map((project, index) => (
