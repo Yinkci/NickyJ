@@ -10,6 +10,7 @@ import oneLastPintMobileApp from "../portfolio_images/One Last Pint Mobile App.j
 import swosh from "../portfolio_images/SWOSH.jpg";
 import tissueDispenserDashboardThingsboard from "../portfolio_images/Tissue Dispenser Dashboard - Thingsboard.png";
 import worldTradeCenterMetroManila from "../portfolio_images/World Trade Center Metro Manila.jpg";
+import Arkon from "../portfolio_images/Arkon.png";
 
 export interface Project {
   id: string;
@@ -41,6 +42,11 @@ export const projects: Project[] = [
     "heat-map-dashboard-thingsboard",
     "Heat Map Dashboard - Thingsboard",
     heatMapDashboardThingsboard,
+  ),
+  portfolioProject(
+    "arkon-content-management-system",
+    "Arkon - Content Management System",
+    Arkon,
   ),
   portfolioProject(
     "blue-cross-philippines",

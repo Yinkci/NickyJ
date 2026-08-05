@@ -17,6 +17,11 @@ export function ProjectRow({ project, index, onOpen }: ProjectRowProps) {
   // own ratio rather than being letterboxed into one fixed frame.
   const ratio = cover && typeof cover === "object" ? cover.width / cover.height : 16 / 10;
   const imageFirst = index % 2 === 0;
+  // The column template has to mirror along with the order, or the image lands
+  // in the narrow column on every alternating row.
+  const columns = imageFirst
+    ? "lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]"
+    : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]";
 
   return (
     <motion.article
@@ -24,7 +29,7 @@ export function ProjectRow({ project, index, onOpen }: ProjectRowProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-      className="group grid items-center gap-8 border-t border-ivory/10 py-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16 lg:py-20"
+      className={`group grid items-center gap-8 border-t border-ivory/10 py-14 lg:gap-16 lg:py-20 ${columns}`}
     >
       {/* Screenshot */}
       <button
@@ -41,7 +46,7 @@ export function ProjectRow({ project, index, onOpen }: ProjectRowProps) {
             src={cover}
             alt={`${project.title} project preview`}
             fill
-            sizes="(max-width: 1023px) 100vw, 58vw"
+            sizes="(max-width: 1023px) 100vw, 62vw"
             priority={index === 0}
             className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
           />
