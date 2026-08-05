@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { siteConfig } from "@/data/config";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/sections/Hero";
@@ -11,11 +12,8 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Portfolio Template</title>
-        <meta
-          name="description"
-          content="Simple portfolio template based on the original project."
-        />
+        <title>Nicky Jacobo — Senior Full Stack Developer</title>
+        <meta name="description" content={siteConfig.description} />
       </Head>
 
       <main className="pb-20">

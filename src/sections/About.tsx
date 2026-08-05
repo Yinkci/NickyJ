@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { Briefcase, Layers, MapPin, MessageSquare, Sparkles } from "lucide-react";
+import { Briefcase, Gauge, Layers, MapPin, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import nickyOne from "../myself/nicky.png";
@@ -13,31 +13,41 @@ const MAP_IMAGE =
   "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200&auto=format&fit=crop";
 
 const spotlights = [
-  { image: nickyThree, label: "Nicky Jacobo", note: "Full Stack Developer" },
-  { image: nickyTwo, label: "10+ years", note: "Shipping production systems" },
-  { image: nickyOne, label: "Full stack", note: "Frontend, backend, APIs" },
+  { image: nickyThree, label: "Nicky Jacobo", note: "Senior Full Stack Developer" },
+  { image: nickyTwo, label: "10+ years", note: "Front-end and back-end" },
+  { image: nickyOne, label: "STEPPS", note: "Real estate platforms since 2019" },
 ];
 
-const technologies = ["Next.js", "React", "TypeScript", "Node", "WordPress", "APIs", "Tailwind"];
+const technologies = [
+  "WordPress",
+  "PHP",
+  "Laravel",
+  "Vue.js",
+  "JavaScript",
+  "WooCommerce",
+  "MySQL",
+  "Node.js",
+  "SASS",
+];
 
 const cards = [
   {
     key: "experience" as const,
     icon: Briefcase,
     title: "Experience",
-    body: "Over 10 years building scalable web applications and digital systems across industries.",
+    body: "Over 10 years of front-end and back-end work, currently building real estate platforms at STEPPS since 2019.",
   },
   {
     key: "capabilities" as const,
     icon: Layers,
     title: "Capabilities",
-    body: "Frontend and backend development, WordPress solutions, REST APIs, and modern web systems.",
+    body: "WordPress and WooCommerce builds, custom plugins, PHP and Laravel back ends, Vue and modern JavaScript.",
   },
   {
-    key: "collaboration" as const,
-    icon: MessageSquare,
-    title: "Collaboration",
-    body: "Clear communication and dependable delivery, from first idea through to release.",
+    key: "performance" as const,
+    icon: Gauge,
+    title: "Performance & SEO",
+    body: "Core Web Vitals tuning and technical SEO with Rank Math and Yoast, so sites load fast and get found.",
   },
 ];
 
@@ -82,7 +92,7 @@ export function About() {
             Behind the <span className="text-gradient-shimmer">Code</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl px-2 text-base font-light leading-relaxed text-(--muted) sm:text-lg">
-            A quick look at how I work, what I build, and where I do it from.
+            Ten years of front-end and back-end work, and what I bring to a build.
           </p>
         </motion.div>
 
@@ -102,15 +112,20 @@ export function About() {
               <h3 className="mt-3 text-3xl font-black leading-none tracking-tighter sm:text-4xl">
                 Nicky <span className="text-gradient-shimmer">Jacobo</span>
               </h3>
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-(--muted)">
+                Senior Full Stack Developer
+              </p>
               <div className="mt-4 h-px w-14 bg-(--foreground)/15" />
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-(--muted) sm:text-base">
-                I turn business problems into software that holds up in production &mdash; web
-                apps, WordPress platforms, APIs, and automations. Ten years in, the part I still
-                enjoy most is picking the right solution rather than the fashionable one.
+                Senior Full Stack Developer with over 10 years of front-end and back-end
+                experience, building fast, responsive websites, plugins, and web applications.
+                Skilled in WordPress, PHP, Vue, Laravel, modern JavaScript, e-commerce, SEO, and
+                performance optimisation.
               </p>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-(--muted) sm:text-base">
-                Curiosity keeps the work interesting; discipline and care are what make it
-                dependable.
+                These days that means high-performance real estate websites, custom plugins, and
+                API integrations &mdash; work that has to stay fast and findable long after
+                launch.
               </p>
             </div>
 
@@ -180,7 +195,7 @@ export function About() {
               {...reveal}
               transition={{ duration: 0.5, delay: 0.12 + index * 0.06 }}
               className={`${cardShell} p-5 sm:p-6 lg:col-span-2 ${
-                card.key === "collaboration" ? "sm:col-span-2" : ""
+                card.key === "performance" ? "sm:col-span-2" : ""
               }`}
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.16),transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -211,8 +226,8 @@ export function About() {
               </span>
               <h3 className="mt-4 text-base font-semibold text-(--foreground)">Craft</h3>
               <p className="mt-2 text-xs leading-relaxed text-(--muted) sm:text-sm">
-                Scalable apps, websites, and automations &mdash; built with the tools that fit the
-                job.
+                Custom plugins, API integrations, and e-commerce builds &mdash; made with the tools
+                that fit the job.
               </p>
             </div>
 
@@ -263,12 +278,12 @@ export function About() {
                 <MapPin size={18} />
               </span>
               <p className="mt-4 text-2xl font-bold leading-none tracking-tighter text-(--foreground) sm:text-3xl">
-                Remote, Worldwide
+                Clark, Pampanga
               </p>
               <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-(--muted)">
-                Available online
+                Philippines
                 <span className="mx-2 text-violet-400">/</span>
-                Flexible hours
+                GMT+8, remote friendly
               </p>
             </div>
           </motion.article>

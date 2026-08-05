@@ -10,7 +10,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           <div className="flex items-center gap-3 text-base text-(--muted)">
             <span className="text-lg font-bold text-(--foreground)">
-              <span className="gradient-text">PS</span>
+              <span className="gradient-text">NJ</span>
             </span>
             <span>•</span>
             <span>

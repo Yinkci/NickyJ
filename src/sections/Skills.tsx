@@ -2,39 +2,53 @@
 
 import { motion } from "framer-motion";
 import {
-  SiDocker,
   SiGit,
+  SiJavascript,
+  SiJquery,
+  SiLaravel,
+  SiMysql,
   SiNodedotjs,
-  SiReact,
-  SiTailwindcss,
-  SiTypescript,
+  SiPhp,
+  SiSass,
+  SiVuedotjs,
+  SiWoocommerce,
+  SiWordpress,
 } from "react-icons/si";
 
 export function Skills() {
-  const beltChunk = [...Array(4)].flatMap(() => [
-    { name: "React", icon: SiReact, color: "#61DAFB" },
-    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "Node", icon: SiNodedotjs, color: "#339933" },
-    { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  const beltChunk = [...Array(2)].flatMap(() => [
+    { name: "WordPress", icon: SiWordpress, color: "#21759B" },
+    { name: "PHP", icon: SiPhp, color: "#777BB4" },
+    { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+    { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "WooCommerce", icon: SiWoocommerce, color: "#96588A" },
+    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+    { name: "jQuery", icon: SiJquery, color: "#0769AD" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "SASS", icon: SiSass, color: "#CC6699" },
     { name: "Git", icon: SiGit, color: "#F05032" },
   ]);
 
   const skillGroups = [
     {
-      title: "Frontend",
-      summary: "UI architecture and polished user experiences.",
-      items: ["Next.js (Pages/App Router)", "React + TypeScript", "Tailwind CSS"],
+      title: "WordPress",
+      summary: "Custom builds, not off-the-shelf themes.",
+      items: [
+        "Custom plugins & Gutenberg blocks",
+        "WooCommerce e-commerce",
+        "ACF, Elementor, Kadence, WPBakery",
+      ],
     },
     {
-      title: "Backend",
-      summary: "Reliable APIs and production-ready services.",
-      items: ["Node.js + REST", "PostgreSQL / Supabase", "Auth, caching, rate-limiting"],
+      title: "Full Stack",
+      summary: "Application logic and the data behind it.",
+      items: ["PHP & Laravel (Blade, OOP)", "Vue.js, JavaScript, jQuery", "MySQL & API integrations"],
     },
     {
-      title: "Shipping",
-      summary: "From idea to deployment with quality control.",
-      items: ["GitHub workflows", "Vercel deployments", "Monitoring + iteration"],
+      title: "Performance & SEO",
+      summary: "Fast to load, easy to find, simple to maintain.",
+      items: ["Core Web Vitals optimisation", "Technical SEO: Rank Math, Yoast", "Git, Bitbucket, Jira, Webpack"],
     },
   ];
 

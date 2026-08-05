@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
+import { Mail, type LucideIcon } from "lucide-react";
 
 export interface Social {
   name: string;
@@ -6,26 +6,19 @@ export interface Social {
   icon: LucideIcon;
 }
 
+// GitHub and LinkedIn were dropped here: the template shipped with the original
+// author's profiles. Add them back once the real URLs are known.
 export const socials: Social[] = [
   {
-    name: "GitHub",
-    url: "https://github.com/Szostak21",
-    icon: Github,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/pawe%C5%82-szostak-0867703a8/",
-    icon: Linkedin,
-  },
-  {
     name: "Email",
-    url: "mailto:pszostak.contact@gmail.com",
+    url: "mailto:nickyjacobo00@gmail.com",
     icon: Mail,
   },
 ];
 
 export const siteConfig = {
   name: "Nicky Jacobo",
-  title: "Full Stack Developer",
-  description: "I build useful products with modern web stack",
+  title: "Senior Full Stack Developer",
+  description:
+    "Senior Full Stack Developer with over 10 years of front-end and back-end experience, building fast, responsive websites, plugins, and web applications.",
 };
