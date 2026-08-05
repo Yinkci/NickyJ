@@ -8,7 +8,7 @@ const navigate = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
-  { href: "#skills", label: "Expertise" },
+  { href: "#skills", label: "Skills" },
   { href: "#other", label: "More" },
 ];
 

@@ -70,7 +70,7 @@ export function Skills() {
         >
           <span className="meta">04</span>
           <span className="h-px flex-1 bg-ivory/10" />
-          <span className="eyebrow">Expertise</span>
+          <span className="eyebrow">Skills</span>
         </motion.div>
 
         <motion.div
@@ -81,8 +81,7 @@ export function Skills() {
           className="mt-14 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end"
         >
           <h2 className="display max-w-2xl text-4xl sm:text-6xl lg:text-7xl">
-            The <span className="display-italic text-gradient-shimmer">full</span> stack, in
-            detail.
+            Skills, <span className="display-italic text-gradient-shimmer">in detail.</span>
           </h2>
           <p className="meta lg:text-right">
             05 disciplines
