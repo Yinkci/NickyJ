@@ -6,10 +6,11 @@ import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import type { Project } from "@/data/projects";
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { ProjectRow } from "@/components/projects/ProjectRow";
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const featured = projects.filter((project) => project.featured);
 
   useEffect(() => {
     if (!selectedProject) return;
@@ -32,54 +33,50 @@ export function Projects() {
     <>
       <section
         id="projects"
-        className="relative overflow-hidden pt-0 pb-32"
-        style={{ scrollMarginTop: "120px" }}
+        className="relative overflow-hidden py-28 sm:py-36"
+        style={{ scrollMarginTop: "80px" }}
       >
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="shell">
           <motion.div
-            className="absolute top-1/4 -left-1/4 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute right-0 bottom-1/4 h-96 w-96 rounded-full bg-purple-500/20 blur-3xl"
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          />
-        </div>
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-5 border-b border-ivory/10 pb-6"
+          >
+            <span className="meta">03</span>
+            <span className="h-px flex-1 bg-ivory/10" />
+            <span className="eyebrow">Selected work</span>
+          </motion.div>
 
-        <div className="section">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center sm:mb-16"
+            transition={{ duration: 0.8 }}
+            className="mt-14 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end"
           >
-            <span className="text-xs font-bold uppercase tracking-widest text-(--accent) sm:text-base">
-              Selected work
-            </span>
-            <h2 className="mt-3 px-2 text-3xl font-bold tracking-tight text-pretty sm:text-5xl md:text-6xl">
-              Featured{" "}
-              <span className="text-gradient-shimmer">Projects</span>
+            <h2 className="display max-w-2xl text-4xl sm:text-6xl lg:text-7xl">
+              Client work, platforms and{" "}
+              <span className="display-italic text-gradient-shimmer">interfaces.</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl px-2 text-base font-light leading-relaxed text-(--muted) sm:text-lg">
-              Client work, web platforms, and product interfaces. Select any screenshot to see it
-              full size.
+            <p className="meta lg:text-right">
+              {String(featured.length).padStart(2, "0")} projects
+              <span className="mx-3 text-champagne/50">/</span>
+              Select any to enlarge
             </p>
           </motion.div>
 
-          <div className="mx-auto max-w-6xl columns-1 gap-6 lg:columns-2 lg:gap-8">
-            {projects
-              .filter((p) => p.featured)
-              .map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  onOpen={setSelectedProject}
-                />
-              ))}
+          <div className="mt-8">
+            {featured.map((project, index) => (
+              <ProjectRow
+                key={project.id}
+                project={project}
+                index={index}
+                onOpen={setSelectedProject}
+              />
+            ))}
+            <div className="border-t border-ivory/10" />
           </div>
         </div>
       </section>
@@ -90,35 +87,46 @@ export function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onMouseDown={() => setSelectedProject(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-obsidian/94 p-4 backdrop-blur-lg sm:p-10"
           >
             <motion.div
               role="dialog"
               aria-modal="true"
               aria-labelledby="project-preview-title"
-              initial={{ opacity: 0, scale: 0.96, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 16 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
               onMouseDown={(event) => event.stopPropagation()}
-              className="relative flex max-h-full w-full max-w-7xl flex-col overflow-hidden rounded-2xl border border-white/15 bg-(--card) shadow-2xl"
+              className="relative flex max-h-full w-full max-w-7xl flex-col overflow-hidden border border-champagne/20 bg-onyx"
             >
-              <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 sm:px-6">
-                <h3 id="project-preview-title" className="text-sm font-semibold text-(--foreground) sm:text-lg">
-                  {selectedProject.title}
-                </h3>
+              <div className="flex items-center justify-between gap-4 border-b border-ivory/10 px-5 py-4 sm:px-7">
+                <div className="flex min-w-0 items-baseline gap-4">
+                  <span className="meta shrink-0 text-champagne">
+                    {String(
+                      featured.findIndex((project) => project.id === selectedProject.id) + 1,
+                    ).padStart(2, "0")}
+                  </span>
+                  <h3
+                    id="project-preview-title"
+                    className="display-medium truncate text-xl text-ivory sm:text-2xl"
+                  >
+                    {selectedProject.title}
+                  </h3>
+                </div>
                 <button
                   type="button"
                   autoFocus
                   onClick={() => setSelectedProject(null)}
                   aria-label="Close project preview"
-                  className="grid size-9 shrink-0 place-items-center rounded-full border border-white/15 text-(--muted) transition hover:border-white/40 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400"
+                  className="grid size-10 shrink-0 place-items-center rounded-full border border-ivory/15 text-(--muted) transition-all duration-500 hover:border-champagne/60 hover:text-champagne focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
                 >
-                  <X size={19} />
+                  <X size={18} />
                 </button>
               </div>
-              <div className="relative h-[70vh] min-h-64 bg-black">
+              <div className="relative h-[72vh] min-h-64 bg-obsidian">
                 {selectedProject.screenshots?.[0] ? (
                   <Image
                     src={selectedProject.screenshots[0]}

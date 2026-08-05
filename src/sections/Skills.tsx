@@ -1,183 +1,133 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Gauge, ShoppingCart, Smartphone, Wrench } from "lucide-react";
-import {
-  SiGit,
-  SiJavascript,
-  SiJquery,
-  SiLaravel,
-  SiMysql,
-  SiNodedotjs,
-  SiPhp,
-  SiSass,
-  SiVuedotjs,
-  SiWoocommerce,
-  SiWordpress,
-} from "react-icons/si";
+
+const skillGroups = [
+  {
+    index: "01",
+    title: "Development",
+    items: [
+      "Laravel",
+      "PHP",
+      "Blade",
+      "JavaScript",
+      "HTML5",
+      "SASS/CSS",
+      "jQuery",
+      "VueJS",
+      "Node.js",
+      "OOP",
+      "MySQL",
+      "APIs",
+      "JAVA",
+    ],
+  },
+  {
+    index: "02",
+    title: "WordPress & Commerce",
+    items: [
+      "WordPress",
+      "WooCommerce",
+      "Gutenberg Blocks",
+      "ACF",
+      "Kadence",
+      "WPBakery",
+      "Beaver Builder",
+      "Elementor",
+    ],
+  },
+  {
+    index: "03",
+    title: "Performance & SEO",
+    items: ["Core Web Vitals", "Technical SEO", "Rank Math", "Yoast SEO"],
+  },
+  {
+    index: "04",
+    title: "Mobile & Cloud",
+    items: ["React Native", "Firebase"],
+  },
+  {
+    index: "05",
+    title: "Workflow & Tools",
+    items: ["GitHub", "Bitbucket", "Jira", "Gulp", "Webpack", "npm/Yarn", "Laragon", "Photoshop"],
+  },
+];
 
 export function Skills() {
-  const beltChunk = [...Array(2)].flatMap(() => [
-    { name: "WordPress", icon: SiWordpress, color: "#21759B" },
-    { name: "PHP", icon: SiPhp, color: "#777BB4" },
-    { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
-    { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
-    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-    { name: "WooCommerce", icon: SiWoocommerce, color: "#96588A" },
-    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-    { name: "jQuery", icon: SiJquery, color: "#0769AD" },
-    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-    { name: "SASS", icon: SiSass, color: "#CC6699" },
-    { name: "Git", icon: SiGit, color: "#F05032" },
-  ]);
-
-  const skillGroups = [
-    {
-      title: "Development",
-      icon: Code2,
-      span: "lg:col-span-7",
-      items: [
-        "Laravel",
-        "PHP",
-        "Blade",
-        "JavaScript",
-        "HTML5",
-        "SASS/CSS",
-        "jQuery",
-        "VueJS",
-        "Node.js",
-        "OOP",
-        "MySQL",
-        "APIs",
-        "JAVA",
-      ],
-    },
-    {
-      title: "WordPress & Commerce",
-      icon: ShoppingCart,
-      span: "lg:col-span-5",
-      items: [
-        "WordPress",
-        "WooCommerce",
-        "Gutenberg Blocks",
-        "ACF",
-        "Kadence",
-        "WPBakery",
-        "Beaver Builder",
-        "Elementor",
-      ],
-    },
-    {
-      title: "Performance & SEO",
-      icon: Gauge,
-      span: "lg:col-span-4",
-      items: ["Core Web Vitals", "Technical SEO", "Rank Math", "Yoast SEO"],
-    },
-    {
-      title: "Mobile & Cloud",
-      icon: Smartphone,
-      span: "sm:col-span-2 lg:col-span-3",
-      items: ["React Native", "Firebase"],
-    },
-    {
-      title: "Workflow & Tools",
-      icon: Wrench,
-      span: "lg:col-span-5",
-      items: [
-        "GitHub",
-        "Bitbucket",
-        "Jira",
-        "Gulp",
-        "Webpack",
-        "npm/Yarn",
-        "Laragon",
-        "Photoshop",
-      ],
-    },
-  ];
-
   return (
     <section
       id="skills"
-      className="relative overflow-hidden pt-0 pb-28"
-      style={{ scrollMarginTop: "100px" }}
+      className="relative overflow-hidden py-28 sm:py-36"
+      style={{ scrollMarginTop: "80px" }}
     >
-      <div className="section">
+      <div className="shell">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-5 border-b border-ivory/10 pb-6"
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-(--accent) sm:text-base">
-            Tech stack
-          </span>
-          <h2 className="mt-3 px-2 text-3xl font-bold tracking-tight text-pretty sm:text-5xl md:text-6xl">
-            Skills <span className="text-gradient-shimmer">Overview</span>
-          </h2>
+          <span className="meta">04</span>
+          <span className="h-px flex-1 bg-ivory/10" />
+          <span className="eyebrow">Expertise</span>
         </motion.div>
 
-        <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="mt-14 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end"
+        >
+          <h2 className="display max-w-2xl text-4xl sm:text-6xl lg:text-7xl">
+            The <span className="display-italic text-gradient-shimmer">full</span> stack, in
+            detail.
+          </h2>
+          <p className="meta lg:text-right">
+            05 disciplines
+            <span className="mx-3 text-champagne/50">/</span>
+            {skillGroups.reduce((total, group) => total + group.items.length, 0)} technologies
+          </p>
+        </motion.div>
+
+        {/* Specification sheet */}
+        <div className="mt-16">
           {skillGroups.map((group, index) => (
             <motion.div
               key={group.title}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.07 }}
-              className={`group relative overflow-hidden rounded-2xl border border-(--card-border) bg-linear-to-br from-(--card) to-(--card-border) p-5 transition-colors duration-300 hover:border-violet-400/30 sm:p-6 ${group.span}`}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.65, delay: index * 0.05 }}
+              className="group grid gap-5 border-t border-ivory/10 py-9 transition-colors duration-700 hover:border-champagne/25 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,1fr)] lg:gap-16"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.14),transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-              <div className="relative z-10 flex items-center gap-3">
-                <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-violet-400/20 bg-violet-500/10 text-violet-300 transition-colors duration-300 group-hover:border-violet-400/50 group-hover:bg-violet-500/20">
-                  <group.icon size={18} />
+              <div className="flex items-baseline gap-5">
+                <span className="meta transition-colors duration-500 group-hover:text-champagne">
+                  {group.index}
                 </span>
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-(--foreground) sm:text-xs">
+                <h3 className="display-medium text-2xl transition-colors duration-500 group-hover:text-champagne sm:text-3xl">
                   {group.title}
                 </h3>
               </div>
 
-              <div className="relative z-10 mt-5 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[11px] font-medium text-(--muted) transition-colors duration-200 hover:border-violet-400/40 hover:text-(--foreground) sm:text-xs"
-                  >
-                    {item}
+              <p className="flex flex-wrap items-baseline gap-x-3 gap-y-2 self-center">
+                {group.items.map((item, itemIndex) => (
+                  <span key={item} className="flex items-baseline gap-3">
+                    {itemIndex > 0 ? (
+                      <span className="text-champagne/45" aria-hidden="true">
+                        ·
+                      </span>
+                    ) : null}
+                    <span className="text-sm font-light text-(--muted) transition-colors duration-500 group-hover:text-ivory/85 sm:text-base">
+                      {item}
+                    </span>
                   </span>
                 ))}
-              </div>
+              </p>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mx-auto mt-8 max-w-6xl rounded-2xl border border-(--card-border) bg-(--card)/40 py-3">
-          <div className="relative overflow-hidden">
-            <motion.div
-              className="flex w-max items-center gap-8 whitespace-nowrap"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                repeat: Infinity,
-                ease: "linear",
-                duration: 24,
-              }}
-            >
-              {[0, 1].map((copy) => (
-                <div key={copy} className="flex items-center gap-8 px-4">
-                  {beltChunk.map((item, index) => (
-                    <div key={`${copy}-${item.name}-${index}`} className="flex items-center gap-2">
-                      <item.icon style={{ color: item.color }} size={16} />
-                      <span className="text-xs uppercase tracking-wider text-(--muted)">
-                        {item.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </motion.div>
-          </div>
+          <div className="border-t border-ivory/10" />
         </div>
       </div>
     </section>

@@ -1,96 +1,102 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Link2, Trophy } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+
+const items = [
+  {
+    key: "guestbook",
+    index: "01",
+    title: "Guestbook",
+    desc: "Optional page where visitors can leave a short message.",
+    href: "#other",
+  },
+  {
+    key: "achievements",
+    index: "02",
+    title: "Achievements",
+    desc: "A visual timeline for milestones, awards, and certifications.",
+    href: "#other",
+  },
+  {
+    key: "links",
+    index: "03",
+    title: "Useful Links",
+    desc: "One place for socials, docs, CV, and featured resources.",
+    href: "#other",
+  },
+];
 
 export function Other() {
-  const items = [
-    {
-      key: "guestbook",
-      icon: BookOpen,
-      title: "Guestbook",
-      desc: "Optional page where visitors can leave a short message.",
-      href: "#other",
-      color: "from-violet-500 to-purple-500",
-    },
-    {
-      key: "achievements",
-      icon: Trophy,
-      title: "Achievements",
-      desc: "A visual timeline for milestones, awards, and certifications.",
-      href: "#other",
-      color: "from-amber-500 to-orange-500",
-    },
-    {
-      key: "links",
-      icon: Link2,
-      title: "Useful Links",
-      desc: "One place for socials, docs, CV, and featured resources.",
-      href: "#other",
-      color: "from-blue-500 to-cyan-500",
-    },
-  ];
-
   return (
     <section
       id="other"
-      className="relative overflow-hidden pt-0 pb-24 sm:pb-32"
-      style={{ scrollMarginTop: "120px" }}
+      className="relative overflow-hidden py-28 sm:py-36"
+      style={{ scrollMarginTop: "80px" }}
     >
-      <div className="section">
+      <div className="shell">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-14 text-center"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-5 border-b border-ivory/10 pb-6"
         >
-          <h2 className="mb-4 px-2 text-3xl font-bold text-pretty sm:text-5xl md:text-6xl">
-            More{" "}
-            <span className="text-gradient-shimmer">Sections</span>
+          <span className="meta">05</span>
+          <span className="h-px flex-1 bg-ivory/10" />
+          <span className="eyebrow">Elsewhere</span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+          className="mt-14"
+        >
+          <h2 className="display max-w-2xl text-4xl sm:text-6xl lg:text-7xl">
+            More to <span className="display-italic text-gradient-shimmer">come.</span>
           </h2>
-          <p className="mx-auto max-w-2xl px-3 text-base text-(--muted) sm:text-lg md:text-xl">
-            Keep these cards or replace them with your own pages.
+          <p className="mt-7 max-w-xl text-base font-light leading-relaxed text-(--muted)">
+            Pages planned for this site. Keep them or replace them with your own.
           </p>
         </motion.div>
 
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
-          {items.map((item) => (
+        <div className="mt-16">
+          {items.map((item, index) => (
             <motion.a
               key={item.key}
               href={item.href}
-              className="group glass relative cursor-pointer overflow-hidden rounded-3xl p-6 transition-all duration-300 hover:scale-105 sm:p-8"
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, delay: index * 0.06 }}
+              className="group grid items-baseline gap-4 border-t border-ivory/10 py-9 transition-colors duration-700 hover:border-champagne/25 sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:gap-10"
             >
-              <div
-                className={`absolute inset-0 bg-linear-to-br ${item.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
-              />
-              <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-                <div
-                  className={`h-16 w-16 rounded-2xl bg-linear-to-br ${item.color} p-0.5`}
-                >
-                  <div className="flex h-full w-full items-center justify-center rounded-2xl bg-(--background)">
-                    <item.icon size={32} style={{ color: "var(--foreground)" }} />
-                  </div>
-                </div>
-                <div>
-                  <h3
-                    className={`bg-linear-to-br ${item.color} mb-2 bg-clip-text px-1 text-xl font-bold text-transparent sm:text-2xl`}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="px-1 text-xs text-(--muted) sm:text-sm">{item.desc}</p>
-                </div>
-                <div
-                  className={`bg-linear-to-br ${item.color} mt-2 bg-clip-text text-sm font-semibold text-transparent transition-transform duration-300 group-hover:translate-x-2`}
-                >
-                  Explore
-                </div>
+              <span className="meta transition-colors duration-500 group-hover:text-champagne">
+                {item.index}
+              </span>
+
+              <div>
+                <h3 className="display-medium text-2xl transition-all duration-500 group-hover:translate-x-2 group-hover:text-champagne sm:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-lg text-sm font-light leading-relaxed text-(--muted) transition-colors duration-500 group-hover:text-ivory/80">
+                  {item.desc}
+                </p>
               </div>
+
+              <span className="flex items-center gap-3 font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-(--muted) transition-colors duration-500 group-hover:text-champagne">
+                Explore
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </span>
             </motion.a>
           ))}
+          <div className="border-t border-ivory/10" />
         </div>
-
       </div>
     </section>
   );

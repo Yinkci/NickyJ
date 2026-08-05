@@ -16,8 +16,8 @@ export default function HomePage() {
         <meta name="description" content={siteConfig.description} />
       </Head>
 
-      <main className="pb-20">
-        <Navbar />
+      <Navbar />
+      <main>
         <Hero />
         <About />
         <Projects />
