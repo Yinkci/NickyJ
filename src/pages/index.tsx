@@ -7,7 +7,8 @@ import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
 import { Projects } from "@/sections/Projects";
 import { Skills } from "@/sections/Skills";
-import { Other } from "@/sections/Other";
+// Section hidden for now — restore this import together with <Other /> below.
+// import { Other } from "@/sections/Other";
 
 export default function HomePage() {
   // Icon hrefs must carry the basePath, which is "/NickyJ" on GitHub Pages and
@@ -32,7 +33,7 @@ export default function HomePage() {
         <About />
         <Projects />
         <Skills />
-        <Other />
+        {/* <Other /> */}
       </main>
       <Footer />
     </>

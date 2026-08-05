@@ -9,7 +9,8 @@ const navigate = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
   { href: "#skills", label: "Skills" },
-  { href: "#other", label: "More" },
+  // Hidden while the Other section is commented out in pages/index.tsx.
+  // { href: "#other", label: "More" },
 ];
 
 export function Footer() {

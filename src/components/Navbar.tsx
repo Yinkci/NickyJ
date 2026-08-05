@@ -9,7 +9,8 @@ const navItems = [
   { href: "#about", label: "About", index: "02" },
   { href: "#projects", label: "Work", index: "03" },
   { href: "#skills", label: "Skills", index: "04" },
-  { href: "#other", label: "More", index: "05" },
+  // Hidden while the Other section is commented out in pages/index.tsx.
+  // { href: "#other", label: "More", index: "05" },
 ];
 
 export function Navbar() {
