@@ -34,10 +34,8 @@ const clientImages = [
 
 export function Hero() {
   const [activeImage, setActiveImage] = useState(0);
-  const [direction, setDirection] = useState(1);
 
-  const goTo = useCallback((next: number, dir: number) => {
-    setDirection(dir);
+  const goTo = useCallback((next: number) => {
     setActiveImage((next + clientImages.length) % clientImages.length);
   }, []);
 
@@ -45,7 +43,6 @@ export function Hero() {
   // instead of cutting the next slide short.
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      setDirection(1);
       setActiveImage((current) => (current + 1) % clientImages.length);
     }, 5500);
 
@@ -78,10 +75,10 @@ export function Hero() {
               <span className="eyebrow">Nicky Cabalu Jacobo</span>
             </div>
 
-            <h1 className="display mt-7 text-4xl sm:text-5xl lg:text-6xl">
-              Ten years of{" "}
-              <span className="display-italic text-gradient-shimmer">solving</span> real world
-              problems.
+            <h1 className="display-bold mt-7 text-4xl sm:text-5xl lg:text-6xl">
+              <span className="text-gradient-shimmer">
+                Ten years of <span className="display-italic">solving</span> real world problems.
+              </span>
             </h1>
 
             <div className="rule mt-8 w-20" />
@@ -115,26 +112,27 @@ export function Hero() {
             className="relative border border-ivory/12 bg-onyx p-2 shadow-[0_40px_90px_-45px_rgba(0,0,0,0.9)]"
           >
             <div className="relative aspect-[16/11] overflow-hidden">
-              <AnimatePresence initial={false} mode="wait" custom={direction}>
+              {/* All slides stay mounted and crossfade. Nothing mounts or
+                  unmounts mid-transition, so there is no gap and no rescale. */}
+              {clientImages.map((item, index) => (
                 <motion.div
-                  key={activeImage}
-                  custom={direction}
-                  initial={{ opacity: 0, scale: 1.04, x: direction * 24 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -24 }}
-                  transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+                  key={item.label}
+                  initial={false}
+                  animate={{ opacity: index === activeImage ? 1 : 0 }}
+                  transition={{ duration: 1.1, ease: "easeInOut" }}
+                  aria-hidden={index !== activeImage}
                   className="absolute inset-0"
                 >
                   <Image
-                    src={currentImage.image}
-                    alt={currentImage.alt}
+                    src={item.image}
+                    alt={item.alt}
                     fill
-                    priority={activeImage === 0}
+                    priority={index === 0}
                     sizes="(max-width: 1023px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </motion.div>
-              </AnimatePresence>
+              ))}
 
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-linear-to-t from-obsidian via-obsidian/45 to-transparent" />
               <div className="pointer-events-none absolute inset-3 border border-champagne/15" />
@@ -159,7 +157,7 @@ export function Hero() {
                 <div className="flex shrink-0 gap-2">
                   <button
                     type="button"
-                    onClick={() => goTo(activeImage - 1, -1)}
+                    onClick={() => goTo(activeImage - 1)}
                     aria-label="Show previous client moment"
                     className="grid size-10 place-items-center rounded-full border border-ivory/25 bg-obsidian/40 text-ivory backdrop-blur-sm transition-all duration-500 hover:border-champagne hover:bg-champagne hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
                   >
@@ -167,7 +165,7 @@ export function Hero() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => goTo(activeImage + 1, 1)}
+                    onClick={() => goTo(activeImage + 1)}
                     aria-label="Show next client moment"
                     className="grid size-10 place-items-center rounded-full border border-ivory/25 bg-obsidian/40 text-ivory backdrop-blur-sm transition-all duration-500 hover:border-champagne hover:bg-champagne hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne"
                   >
@@ -189,7 +187,7 @@ export function Hero() {
                   <button
                     key={item.label}
                     type="button"
-                    onClick={() => goTo(index, index > activeImage ? 1 : -1)}
+                    onClick={() => goTo(index)}
                     aria-label={`Show ${item.label.toLowerCase()}`}
                     aria-current={activeImage === index ? "true" : undefined}
                     className="py-2"

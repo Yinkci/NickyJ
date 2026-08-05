@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["300", "400", "700"],
   style: ["normal", "italic"],
   variable: "--font-display-family",
   display: "swap",

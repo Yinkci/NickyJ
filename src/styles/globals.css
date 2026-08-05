@@ -25,8 +25,10 @@
   --accent-hover: #dcc08a;
   --card: #121016;
   --card-border: #221e28;
-  --gradient-start: #f4e6c2;
-  --gradient-end: #a8853f;
+  /* Mid-tone gold on purpose: a pale start would leave the white shimmer
+     highlight with nothing to contrast against. */
+  --gradient-start: #cfb277;
+  --gradient-end: #8a6930;
 }
 
 html,
@@ -124,6 +126,15 @@ body::after {
   line-height: 1.1;
 }
 
+/* Heavy serif, for the hero statement only — it anchors the page against the
+   light weight used by every other heading. */
+.display-bold {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+}
+
 .display-italic {
   font-family: var(--font-display);
   font-weight: 300;
@@ -211,20 +222,20 @@ body::after {
   }
 }
 
-/* Slow champagne sweep. Padding compensates for serif descenders, which
-   background-clip: text would otherwise crop. */
+/* Champagne fill with a highlight that sweeps across it. Padding compensates
+   for serif descenders, which background-clip: text would otherwise crop. */
 .text-gradient-shimmer {
   display: inline-block;
   padding-bottom: 0.12em;
   margin-bottom: -0.12em;
   background-image:
-    linear-gradient(110deg, transparent 44%, rgba(255, 246, 224, 0.6) 50%, transparent 56%),
+    linear-gradient(110deg, transparent 36%, rgba(255, 253, 246, 0.98) 50%, transparent 64%),
     linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   background-size: 220% 100%, 100% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer-gradient 8s infinite linear;
+  animation: shimmer-gradient 3.6s infinite linear;
 }
 
 /* Slow drift on the hero backdrop. Re-keying the element restarts it. */

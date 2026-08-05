@@ -87,7 +87,7 @@ export function Navbar() {
                 scrolled ? "h-16" : "h-20 sm:h-24"
               }`}
             >
-              <a href="#home" aria-label={`${siteConfig.name} — home`} className="group flex items-baseline gap-3">
+              <a href="#home" aria-label={`${siteConfig.name} — home`} className="group flex items-center gap-3">
                 <span className="display-medium text-2xl leading-none">
                   <span className="gradient-text">NJ</span>
                 </span>

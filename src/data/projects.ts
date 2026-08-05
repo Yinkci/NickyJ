@@ -37,17 +37,41 @@ const portfolioProject = (
 });
 
 export const projects: Project[] = [
-  portfolioProject("blue-cross-philippines", "Blue Cross Philippines", blueCrossPhilippines),
-  portfolioProject("coulson-and-co-real-estate", "Coulson and Co Real Estate", coulsonAndCoRealEstate),
-  portfolioProject("denovans-real-estate", "Denovans Real Estate", denovansRealEstate),
   portfolioProject(
     "heat-map-dashboard-thingsboard",
     "Heat Map Dashboard - Thingsboard",
     heatMapDashboardThingsboard,
   ),
-  portfolioProject("mega-philippines-inc", "MEGA Philippines INC", megaPhilippines),
-  portfolioProject("mercy-connect-consultation", "Mercy Connect Consultation", mercyConnectConsultation),
-  portfolioProject("one-last-pint-mobile-app", "One Last Pint Mobile App", oneLastPintMobileApp),
+  portfolioProject(
+    "blue-cross-philippines",
+    "Blue Cross Philippines",
+    blueCrossPhilippines,
+  ),
+  portfolioProject(
+    "coulson-and-co-real-estate",
+    "Coulson and Co Real Estate",
+    coulsonAndCoRealEstate,
+  ),
+  portfolioProject(
+    "denovans-real-estate",
+    "Denovans Real Estate",
+    denovansRealEstate,
+  ),
+  portfolioProject(
+    "mega-philippines-inc",
+    "MEGA Philippines INC",
+    megaPhilippines,
+  ),
+  portfolioProject(
+    "mercy-connect-consultation",
+    "Mercy Connect Consultation",
+    mercyConnectConsultation,
+  ),
+  portfolioProject(
+    "one-last-pint-mobile-app",
+    "One Last Pint Mobile App",
+    oneLastPintMobileApp,
+  ),
   portfolioProject("swosh", "SWOSH", swosh),
   portfolioProject(
     "tissue-dispenser-dashboard-thingsboard",
