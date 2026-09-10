@@ -15,6 +15,7 @@ import Lindy from "../portfolio_images/Lindy-Real-Estate.png";
 import remaxgc from "../portfolio_images/Remax-Regency.jpg";
 import freshLook from "../portfolio_images/Fresh-Look.png";
 import focusPartners from "../portfolio_images/Focus-Partners.png";
+import everwhisker from "../portfolio_images/everwhisker.png";
 
 export interface Project {
   id: string;
@@ -97,4 +98,6 @@ export const projects: Project[] = [
   portfolioProject("remaxgc", "Remax Regency", remaxgc),
   portfolioProject("fresh-look", "Fresh Look", freshLook),
   portfolioProject("focus-partners", "Focus Partners", focusPartners),
+  portfolioProject("ever-whisker", "Everwhisker", everwhisker),
+
 ];
